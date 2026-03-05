@@ -1,0 +1,108 @@
+<!-- Sebastien Chisiu -->
+<app-navbar></app-navbar>
+
+<div class="flex flex-col lg:flex-row min-h-screen">
+    <div class="w-full lg:w-2/3 flex flex-col min-h-screen">
+        <!-- Fil d'Ariane -->
+        <div class="w-full h-10 mt-14 sm:mt-0 bg-black flex items-center pl-4 gap-1">
+            <a routerLink="/accueil"
+                class="relative text-gray-200 font-semibold hover:text-white border-b-2 border-transparent hover:border-white transition-colors duration-300">Accueil</a>
+            <span class="text-white mb-1"> &gt; Contact</span>
+        </div>
+        <!-- Formulaire -->
+        <div class="relative w-[90%] sm:w-[80%] lg:w-[60%] mx-auto mt-10 lg:mt-15 flex flex-col grow mb-10">
+            <h1 class="text-3xl sm:text-4xl font-bold mb-1">Nous Contacter</h1>
+            <p class="text-gray-500 mb-6 Caladea">Signalez nous votre problème !</p>
+            <form #contactForm="ngForm" class="flex flex-col gap-6 lg:gap-10">
+                <div class="flex flex-col sm:flex-row gap-6">
+                    <div class="flex-1">
+                        <input type="text" name="nom" ngModel required #nomRef="ngModel" placeholder="Nom"
+                            class="w-full border-b border-black focus:outline-none py-2 text-[15px] bg-transparent" />
+                        <span *ngIf="nomRef.invalid && nomRef.touched" class="text-red-500 text-[11px] mt-1 block">
+                            Le nom est requis.
+                        </span>
+                    </div>
+
+                    <div class="flex-1">
+                        <input type="email" name="email" ngModel required email #emailRef="ngModel" placeholder="Email"
+                            class="w-full border-b border-black focus:outline-none py-2 text-[15px] bg-transparent" />
+                        <span *ngIf="emailRef.invalid && emailRef.touched" class="text-red-500 text-[11px] mt-1 block">
+                            <span *ngIf="emailRef.errors?.['required']">L'email est requis.</span>
+                            <span *ngIf="emailRef.errors?.['email']">Format d'email invalide.</span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col">
+                    <input type="text" name="sujet" ngModel required #sujetRef="ngModel" placeholder="Sujet"
+                        class="border-b border-black focus:outline-none py-2 text-[15px] bg-transparent" />
+                    <span *ngIf="sujetRef.invalid && sujetRef.touched" class="text-red-500 text-[11px] mt-1 block">
+                        Le sujet est requis.
+                    </span>
+                </div>
+
+                <div class="flex flex-col">
+                    <textarea name="message" ngModel required #msgRef="ngModel" placeholder="Votre Message"
+                        class="border-b border-black focus:outline-none pt-2 text-[15px] resize-none bg-transparent h-32"></textarea>
+                    <span *ngIf="msgRef.invalid && msgRef.touched" class="text-red-500 text-[11px] mt-1 block">
+                        Le message est requis.
+                    </span>
+                </div>
+            </form>
+
+            <div class="flex flex-col md:flex-row items-center gap-6 mt-10">
+                <div class="w-full md:w-fit flex flex-col gap-2">
+                    <div class="flex items-center gap-6">
+                        <button type="button" (click)="envoyerMessage(contactForm)"
+                            class="w-full md:w-fit px-8 py-2 rounded-full bg-black text-white cursor-pointer font-semibold hover:bg-gray-700 flex justify-center items-center gap-2 transition-colors duration-100">
+                            ENVOYER
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 ml-1 inline" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 12h14M12 5l7 7-7 7" />
+                                </svg>
+                            </span>
+                        </button>
+
+                        <p *ngIf="messageEnvoye" class="text-green-600 font-semibold animate-fade-in whitespace-nowrap">
+                            Message envoyé
+                        </p>
+                    </div>
+
+                    <p *ngIf="contactForm.invalid && (contactForm.touched || contactForm.submitted)"
+                        class="text-red-500 text-[10px] italic">
+                        Veuillez remplir tous les champs.
+                    </p>
+                </div>
+
+                <!-- fin formulaire -->
+                <!-- Réseaux Sociaux -->
+
+                <div class="md:ml-auto flex items-center gap-2">
+                    <span class="whitespace-nowrap"> Nous suivre :</span>
+                    <a><img src="images/icons/facebook.webp" alt="icone de facebook en noir"
+                            class="cursor-pointer w-[30px] h-[30px] sm:w-[35px] sm:h-[35px] object-contain" /></a>
+                    <a><img src="images/icons/tiktok.webp" alt="icone de tiktok en noir"
+                            class="cursor-pointer w-[30px] h-[30px] sm:w-[35px] sm:h-[35px] object-contain" /></a>
+                    <a><img src="images/icons/instagram.webp" alt="icone d'instagram en noir"
+                            class="cursor-pointer w-[30px] h-[30px] sm:w-[35px] sm:h-[35px] object-contain" /></a>
+                    <a><img src="images/icons/X.webp" alt="icone de X en noir"
+                            class="cursor-pointer w-[30px] h-[30px] sm:w-[35px] sm:h-[35px]"></a>
+                </div>
+            </div>
+        </div>
+        <footer class="w-full bg-black mt-auto py-2">
+            <div class="flex flex-col sm:flex-row justify-between items-center h-full w-full px-4 gap-2">
+                <span class="text-white text-sm">© 2025 Sushi'N'Go</span>
+                <span class="text-white text-sm flex flex-wrap justify-center items-center gap-3">
+                    <a href="/mentions-legales" class="hover:underline">Mentions légales</a>
+                    <a href="/plan-site" class="border-l pl-2 border-white hover:underline">Plan du site</a>
+                    <a href="/utilisation-cookie" class="border-l pl-2 border-white hover:underline">Utilisation des
+                        cookies</a>
+                </span>
+            </div>
+        </footer>
+    </div>
+    <div class="hidden lg:block lg:w-1/3 h-full" id="imgfond"></div>
+</div>

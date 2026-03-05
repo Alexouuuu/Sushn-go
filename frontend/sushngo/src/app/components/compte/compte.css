@@ -1,0 +1,104 @@
+/* maxime derènes */
+
+/* Barre de progression par défaut (gris) */
+progress::-moz-progress-bar {
+    border-radius: 25px;
+    background: #2E3F2D !important;
+}
+
+progress::-webkit-progress-value {
+    border-radius: 25px;
+    background: #2E3F2D !important;
+}
+
+progress::-ms-fill {
+    border-radius: 25px;
+    background: #2E3F2D !important;
+}
+
+progress {
+    border-radius: 25px;
+    color: #2E3F2D;
+    background-color: #e5e7eb;
+}
+
+/* Barre de progression jaune quand un palier est atteint */
+progress.progress-yellow::-moz-progress-bar {
+    border-radius: 25px;
+    background: #FFEA47 !important;
+}
+
+progress.progress-yellow::-webkit-progress-value {
+    border-radius: 25px;
+    background: #FFEA47 !important;
+}
+
+progress.progress-yellow::-ms-fill {
+    border-radius: 25px;
+    background: #FFEA47 !important;
+}
+
+progress.progress-yellow {
+    border-radius: 25px;
+    color: #FFEA47;
+}
+
+#fidelite {
+    background-image: url("/images/assets/mer.webp");
+    background-size: cover;
+    background-position: center;
+}
+
+/* Animation de pulsation subtile (sans glow) */
+@keyframes pulse-subtle {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.02);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.circle-active {
+    animation: pulse-subtle 2s infinite ease-in-out;
+    transform-origin: center;
+}
+
+.circle {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (max-width: 768px) {
+    .fid {
+        margin-left: 3.1rem;
+    }
+
+    .fid p {
+        font-size: 1.3rem;
+    }
+
+    .valuefid {
+        margin-left: 3.1rem;
+    }
+
+    #fideliteprogress {
+        width: 21rem;
+    }
+
+    .fidrec {
+        width: 22.5rem;
+    }
+}
+
+/*sa permet de changer la couleur de la barre de progression dans certains navigateurs, dans l'ordre :
+
+Firefox
+Chrome ou Safari
+edge
+
+*/

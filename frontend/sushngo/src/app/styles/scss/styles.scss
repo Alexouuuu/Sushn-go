@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+// maxime derènes
+
+$font-main: 'Jost', sans-serif;
+$font-serif: 'Caladea', sans-serif;
+$font-title: 'Julee', sans-serif;
+
+@include declare-font('Jost', '/fonts/Jost-Regular.woff2', 'woff2');
+@include declare-font('Caladea', '/fonts/Caladea-Regular.woff', 'woff');
+@include declare-font('Julee', '/fonts/Julee-Regular.woff', 'woff');
+
+// Mixin -> évite de répéter fontface a chaque fois
+@mixin declare-font($name, $path, $format) {
+    @font-face {
+        font-family: $name;
+        src: url($path) format($format);
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+}
+
+.Jost {
+    font-family: $font-main;
+    font-weight: 200;
+}
+
+.Caladea {
+    font-family: $font-serif;
+    font-weight: 200;
+}
+
+.Julee {
+    font-family: $font-title;
+    font-weight: 200;
+}
+
+p, a, form {
+    font-family: $font-main;
+    font-weight: 400;
+    font-style: normal;
+}
